@@ -39,7 +39,7 @@ Foram realizadas validações para garantir a consistência dos dados:
 O dashboard foi desenvolvido no Google Looker Studio e permite explorar os principais padrões de fraude nas transações.
 
 🔗 Acesse aqui:  
-https://lookerstudio.google.com/reporting/71a786d5-9c84-4154-9db4-0d58a8c8f274
+- https://lookerstudio.google.com/reporting/71a786d5-9c84-4154-9db4-0d58a8c8f274
 ---
 
 ## 📥 Importação dos dados
