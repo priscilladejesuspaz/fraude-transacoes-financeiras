@@ -26,7 +26,7 @@ reports/
   figures/                     # gráficos de avaliação do modelo
   metricas_modelos.csv         # métricas consolidadas dos dois modelos
 dashboard/
-  dashboard.jpg                # captura do dashboard no Looker Studio
+  fraude-transacoes-financeiras.pdf                # pdf do dashboard no Looker Studio
 ```
 
 ---
