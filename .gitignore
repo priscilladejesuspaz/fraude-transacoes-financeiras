@@ -1,0 +1,4 @@
+# Dados brutos (grandes, disponiveis publicamente no Kaggle - nao versionar)
+data/raw_fraudTest.csv
+data/raw_fraudTrain.csv
+*.csv.gz
