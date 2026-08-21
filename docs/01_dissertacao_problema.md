@@ -1,4 +1,4 @@
-# Dissertação sobre o Problema — Fraude em Cartão de Crédito
+# Dissertação sobre o Problema - Fraude em Cartão de Crédito
 
 **Projeto:** Detecção de Fraude em Transações Financeiras
 **Programa:** Empregabilidade EBAC/Semantix
