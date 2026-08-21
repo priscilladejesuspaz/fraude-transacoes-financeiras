@@ -1,6 +1,6 @@
 # Detecção de Fraude em Transações Financeiras com Cartão de Crédito
 
-Projeto de ciência de dados desenvolvido no Programa de Empregabilidade EBAC/Semantix, com foco no perfil de clientes da Semantix na vertical de fintechs, crédito e pagamentos (PicPay, Vindi, BoaVista SCPC).
+Projeto de análise de dados desenvolvido no Programa de Empregabilidade EBAC/Semantix, com foco no perfil de clientes da Semantix na vertical de fintechs, crédito e pagamentos (PicPay, Vindi, BoaVista SCPC).
 
 O objetivo é identificar padrões de fraude em transações de cartão de crédito, combinando análise exploratória em SQL, um dashboard interativo e um modelo preditivo capaz de sinalizar transações suspeitas.
 
@@ -33,7 +33,7 @@ dashboard/
 
 ## 🎯 O problema
 
-Fraude em cartão de crédito é rara em volume, mas cara em impacto — e é um problema clássico de classe desbalanceada, onde acurácia simples é enganosa. O contexto completo do problema, sua relevância para o setor financeiro e a motivação do projeto estão em [`docs/01_dissertacao_problema.md`](docs/01_dissertacao_problema.md).
+Fraude em cartão de crédito é rara em volume, mas cara em impacto, e é um problema clássico de classe desbalanceada, onde acurácia simples é enganosa. O contexto completo do problema, sua relevância para o setor financeiro e a motivação do projeto estão em [`docs/01_dissertacao_problema.md`](docs/01_dissertacao_problema.md).
 
 ## 📊 Fonte de dados
 
@@ -68,7 +68,7 @@ Dois modelos treinados sobre os dados brutos (555.719 linhas, split estratificad
 | Regressão Logística | 0,942 | 0,147 | 80,6% | 2,3% |
 | **Random Forest** | **0,990** | **0,816** | **87,9%** | **36,0%** |
 
-O Random Forest é o modelo recomendado: recall similar à Regressão Logística, mas com precisão muito superior — menos falsos positivos para revisar. `amt` (valor) e `hora` da transação são as variáveis mais relevantes, confirmando quantitativamente o padrão noturno identificado na EDA.
+O Random Forest é o modelo recomendado: recall similar à Regressão Logística, mas com precisão muito superior, menos falsos positivos para revisar. `amt` (valor) e `hora` da transação são as variáveis mais relevantes, confirmando quantitativamente o padrão noturno identificado na EDA.
 
 Script completo em [`notebooks/02_modelagem_fraude.py`](notebooks/02_modelagem_fraude.py). Análise completa, incluindo por que AUC-PR é a métrica certa aqui e as limitações do modelo, em [`docs/03_relatorio_insights.md`](docs/03_relatorio_insights.md).
 
@@ -83,7 +83,7 @@ Script completo em [`notebooks/02_modelagem_fraude.py`](notebooks/02_modelagem_f
 
 Desenvolvido no Google Looker Studio a partir das views SQL (`sql/05_views.sql`):
 
-🔗 https://lookerstudio.google.com/reporting/71a786d5-9c84-4154-9db4-0d58a8c8f274
+🔗 https://datastudio.google.com/reporting/71a786d5-9c84-4154-9db4-0d58a8c8f274
 
 ## 📥 Importação dos dados
 
