@@ -1,4 +1,4 @@
-# Fontes de Dados — Detecção de Fraude em Cartão de Crédito
+# Fontes de Dados - Detecção de Fraude em Cartão de Crédito
 
 ## 1. Dataset
 
@@ -9,7 +9,7 @@
 
 ## 2. Como os dados foram gerados
 
-O dataset é **sintético**, produzido com a ferramenta **Sparkov Data Generation** (desenvolvida por Brandon Harris), criada especificamente para gerar dados realistas de transações de cartão de crédito — incluindo transações legítimas e fraudulentas — a partir de perfis simulados de clientes e comerciantes, distribuídos geograficamente.
+O dataset é **sintético**, produzido com a ferramenta **Sparkov Data Generation** (desenvolvida por Brandon Harris), criada especificamente para gerar dados realistas de transações de cartão de crédito, incluindo transações legítimas e fraudulentas a partir de perfis simulados de clientes e comerciantes, distribuídos geograficamente.
 
 Isso tem uma implicação importante para o projeto: **não há dados reais de clientes envolvidos**, o que elimina questões de privacidade e LGPD, mas também significa que os padrões de fraude refletem as regras do simulador, não necessariamente todo o espectro de fraude real observado por uma instituição financeira.
 
@@ -49,7 +49,7 @@ A escolha de trabalhar apenas com `fraudTest.csv` foi por tamanho/tempo de proce
 
 A validação de qualidade dos dados (nulos, datas inválidas, integridade de registros) foi feita em SQL, documentada em `sql/03_data_quality.sql`. Nenhuma inconsistência estrutural relevante foi encontrada que exigisse descarte de linhas.
 
-Na etapa de modelagem (`notebooks/02_modelagem_fraude.py`), os dados brutos foram enriquecidos com variáveis derivadas — hora e dia da semana da transação, idade do titular calculada a partir da data de nascimento, período do dia, e distância aproximada entre a localização do titular e do comerciante — usadas como atributos preditivos além das colunas originais.
+Na etapa de modelagem (`notebooks/02_modelagem_fraude.py`), os dados brutos foram enriquecidos com variáveis derivadas, hora e dia da semana da transação, idade do titular calculada a partir da data de nascimento, período do dia, e distância aproximada entre a localização do titular e do comerciante, usadas como atributos preditivos além das colunas originais.
 
 ## 6. Licenciamento e uso
 
