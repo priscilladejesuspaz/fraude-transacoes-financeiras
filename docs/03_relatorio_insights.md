@@ -3,7 +3,7 @@
 **Projeto:** Detecção de Fraude em Transações Financeiras
 **Programa:** Empregabilidade EBAC/Semantix
 **Fonte de dados:** Credit Card Transactions Fraud Detection Dataset (Kartik Shenoy, Kaggle), gerado com Sparkov Data Generation - dados sintéticos, sem informação real de clientes
-**Base analisada:** `fraudTest.csv` — 555.719 transações, 2.145 marcadas como fraude (0,386%)
+**Base analisada:** `fraudTest.csv` - 555.719 transações, 2.145 marcadas como fraude (0,386%)
 
 Este documento consolida os dois pilares do projeto na Fase 1: a análise exploratória feita em SQL (etapa já concluída, refletida no dashboard e no README) e os resultados da modelagem preditiva (Regressão Logística e Random Forest), rodada sobre os dados brutos reais. A Fase 2 do projeto (dataset expandido, análise por dia da semana e evolução temporal, dashboard em Power BI) está documentada no README principal e ainda não teve a modelagem preditiva reexecutada sobre o dataset ampliado.
 
@@ -13,8 +13,8 @@ Este documento consolida os dois pilares do projeto na Fase 1: a análise explor
 
 A análise exploratória, feita diretamente no banco (scripts em `fase_1_looker_studio/sql/`), estabeleceu o cenário:
 
-- **Desbalanceamento extremo**: 553.574 transações normais contra 2.145 fraudulentas — a classe positiva é 0,39% da base. Qualquer modelo avaliado só por acurácia estaria mascarando esse desbalanceamento.
-- **Concentração horária**: 71% das fraudes ocorrem à noite (taxa de 0,71% das transações naquele período) e 69% na madrugada (0,69%), contra 0,08% pela manhã e 0,06% à tarde. Fraude não é um evento uniforme ao longo do dia — é um evento noturno.
+- **Desbalanceamento extremo**: 553.574 transações normais contra 2.145 fraudulentas - a classe positiva é 0,39% da base. Qualquer modelo avaliado só por acurácia estaria mascarando esse desbalanceamento.
+- **Concentração horária**: 71% das fraudes ocorrem à noite (taxa de 0,71% das transações naquele período) e 69% na madrugada (0,69%), contra 0,08% pela manhã e 0,06% à tarde. Fraude não é um evento uniforme ao longo do dia, é um evento noturno.
 - **Categorias de risco**: `shopping_net` (1,21% de taxa de fraude) e `misc_net` (0,98%) lideram, seguidas por `grocery_pos` (0,92%) e `shopping_pos` (0,43%). Categorias digitais/online concentram o risco relativo, mesmo que o volume financeiro esteja em outro lugar.
 - **Valor**: transações de baixo valor dominam o volume total (R$ 35,6 milhões) frente a transações de alto valor (R$ 2,95 milhões), volume não é sinônimo de risco.
 
@@ -27,7 +27,7 @@ Com os dados brutos linha a linha (555.719 registros), foram treinados dois mode
 | Regressão Logística | 0,942 | 0,147 | 80,6% | 2,3% |
 | Random Forest | 0,990 | 0,816 | 87,9% | 36,0% |
 
-**Por que AUC-PR importa mais que AUC-ROC aqui:** com 0,39% de positivos, a AUC-ROC fica artificialmente alta mesmo para um modelo fraco (a Regressão Logística tem 0,942 de AUC-ROC mas apenas 0,147 de AUC-PR — ou seja, na prática ela gera uma enxurrada de falsos positivos: para cada 100 alertas que dispara, só ~2 são fraude real). O Random Forest, com AUC-PR de 0,816, é a diferença entre um modelo que soa bem no papel e um que é operacionalmente utilizável.
+**Por que AUC-PR importa mais que AUC-ROC aqui:** com 0,39% de positivos, a AUC-ROC fica artificialmente alta mesmo para um modelo fraco (a Regressão Logística tem 0,942 de AUC-ROC mas apenas 0,147 de AUC-PR, ou seja, na prática ela gera uma enxurrada de falsos positivos: para cada 100 alertas que dispara, só ~2 são fraude real). O Random Forest, com AUC-PR de 0,816, é a diferença entre um modelo que soa bem no papel e um que é operacionalmente utilizável.
 
 **Matriz de confusão (Random Forest, conjunto de teste):**
 - Fraudes corretamente identificadas: 471 de 536 (87,9% de recall)
