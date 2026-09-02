@@ -25,15 +25,15 @@ A escolha desse projeto, entre os dois desenvolvidos no programa, foi deliberada
 
 O projeto foi desenvolvido em duas fases (ver README principal para o contexto completo da evolução) e segue um fluxo de ponta a ponta:
 
-1. **Documentação da fonte de dados** (`docs/02_fontes_de_dados.md`) — entendimento de onde os dados vêm, como foram gerados e suas limitações.
-2. **Análise exploratória em SQL — Fase 1** (`fase_1_looker_studio/sql/`) — validação de qualidade dos dados e primeiras respostas descritivas sobre padrões de fraude.
+1. **Documentação da fonte de dados** (`docs/02_fontes_de_dados.md`) - entendimento de onde os dados vêm, como foram gerados e suas limitações.
+2. **Análise exploratória em SQL — Fase 1** (`fase_1_looker_studio/sql/`) - validação de qualidade dos dados e primeiras respostas descritivas sobre padrões de fraude.
 3. **Dashboard interativo — Fase 1** (Looker Studio) — comunicação visual dos achados da EDA para um público não técnico.
-4. **Modelagem preditiva** (`fase_1_looker_studio/notebooks/02_modelagem_fraude.py`) — Regressão Logística como baseline interpretável e Random Forest como modelo de maior capacidade preditiva, ambos avaliados com métricas apropriadas para classe desbalanceada.
-5. **Análise expandida e dashboard — Fase 2** (`fase_2_power_bi/`) — dataset completo (1,85 milhão de transações), novas dimensões de análise (dia da semana, evolução temporal) e dashboard interativo em Power BI + DAX.
-6. **Relatório de insights** (`docs/03_relatorio_insights.md`) — síntese consolidando EDA e modelagem, com recomendação de modelo e ações de negócio.
+4. **Modelagem preditiva** (`fase_1_looker_studio/notebooks/02_modelagem_fraude.py`) - Regressão Logística como baseline interpretável e Random Forest como modelo de maior capacidade preditiva, ambos avaliados com métricas apropriadas para classe desbalanceada.
+5. **Análise expandida e dashboard — Fase 2** (`fase_2_power_bi/`) - dataset completo (1,85 milhão de transações), novas dimensões de análise (dia da semana, evolução temporal) e dashboard interativo em Power BI + DAX.
+6. **Relatório de insights** (`docs/03_relatorio_insights.md`) - síntese consolidando EDA e modelagem, com recomendação de modelo e ações de negócio.
 
 ## 5. Escopo e limitações reconhecidas desde o início
 
 O dataset usado (ver `docs/02_fontes_de_dados.md`) é **sintético**, gerado pela ferramenta Sparkov, não é dado real de clientes, o que remove qualquer preocupação de privacidade/LGPD, mas também significa que os padrões encontrados podem não capturar toda a complexidade de fraude no mundo real (ex.: fraude organizada, ataques coordenados, adaptação do fraudador ao longo do tempo). Essa limitação é tratada explicitamente no relatório de insights, e é um ponto que vale a pena antecipar numa eventual entrevista: o projeto não afirma ter resolvido detecção de fraude, mas demonstra a capacidade de estruturar o problema, escolher métricas corretas e defender as escolhas feitas.
 
-Vale notar também que a modelagem preditiva (item 4) foi realizada apenas sobre o dataset da Fase 1 e ainda não foi reexecutada sobre o dataset expandido da Fase 2 — uma limitação de escopo reconhecida e documentada no README principal.
+Vale notar também que a modelagem preditiva (item 4) foi realizada apenas sobre o dataset da Fase 1 e ainda não foi reexecutada sobre o dataset expandido da Fase 2 - uma limitação de escopo reconhecida e documentada no README principal.
