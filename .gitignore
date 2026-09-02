@@ -1,4 +1,17 @@
-# Dados brutos (grandes, disponiveis publicamente no Kaggle - nao versionar)
-data/raw_fraudTest.csv
-data/raw_fraudTrain.csv
+# Dados brutos (grandes, disponíveis publicamente no Kaggle - não versionar)
+fase_1_looker_studio/data/raw_fraudTest.csv
+fase_2_power_bi/data/train.csv
+fase_2_power_bi/data/test.csv
 *.csv.gz
+
+# Power BI (arquivo grande)
+fase_2_power_bi/dashboard/*.pbix
+*.pbix.bak
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.swp
