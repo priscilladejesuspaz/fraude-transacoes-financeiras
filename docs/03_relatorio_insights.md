@@ -5,13 +5,13 @@
 **Fonte de dados:** Credit Card Transactions Fraud Detection Dataset (Kartik Shenoy, Kaggle), gerado com Sparkov Data Generation - dados sintéticos, sem informação real de clientes
 **Base analisada:** `fraudTest.csv` — 555.719 transações, 2.145 marcadas como fraude (0,386%)
 
-Este documento consolida os dois pilares do projeto: a análise exploratória feita em SQL (etapa já concluída, refletida no dashboard e no README) e os resultados da modelagem preditiva (Regressão Logística e Random Forest), rodada sobre os dados brutos reais.
+Este documento consolida os dois pilares do projeto na Fase 1: a análise exploratória feita em SQL (etapa já concluída, refletida no dashboard e no README) e os resultados da modelagem preditiva (Regressão Logística e Random Forest), rodada sobre os dados brutos reais. A Fase 2 do projeto (dataset expandido, análise por dia da semana e evolução temporal, dashboard em Power BI) está documentada no README principal e ainda não teve a modelagem preditiva reexecutada sobre o dataset ampliado.
 
 ---
 
 ## 1. O que a EDA em SQL já mostrava
 
-A análise exploratória, feita diretamente no banco (scripts em `sql/`), estabeleceu o cenário:
+A análise exploratória, feita diretamente no banco (scripts em `fase_1_looker_studio/sql/`), estabeleceu o cenário:
 
 - **Desbalanceamento extremo**: 553.574 transações normais contra 2.145 fraudulentas — a classe positiva é 0,39% da base. Qualquer modelo avaliado só por acurácia estaria mascarando esse desbalanceamento.
 - **Concentração horária**: 71% das fraudes ocorrem à noite (taxa de 0,71% das transações naquele período) e 69% na madrugada (0,69%), contra 0,08% pela manhã e 0,06% à tarde. Fraude não é um evento uniforme ao longo do dia — é um evento noturno.
@@ -56,13 +56,14 @@ A Regressão Logística permanece útil como baseline interpretável, seus coefi
 
 - O dataset é sintético (Sparkov), então padrões podem não capturar toda a complexidade de fraude real (ex.: fraude organizada, ataques coordenados).
 - O modelo foi avaliado em split temporal aleatório, não em validação out-of-time; em produção, testar em um período posterior ao de treino seria o próximo passo natural.
-- Um ajuste de threshold de decisão (hoje 0,5 por padrão) poderia trocar mais precisão por recall ou vice-versa, dependendo do apetite ao risco do negócio, vale explorar a curva precisão-recall (`reports/figures/02_curva_precision_recall.png`) para escolher esse ponto de operação.
+- Um ajuste de threshold de decisão (hoje 0,5 por padrão) poderia trocar mais precisão por recall ou vice-versa, dependendo do apetite ao risco do negócio, vale explorar a curva precisão-recall (`fase_1_looker_studio/reports/figures/02_curva_precision_recall.png`) para escolher esse ponto de operação.
+- **Escopo não coberto ainda:** a modelagem preditiva foi feita apenas sobre o dataset da Fase 1 (555.719 transações). O dataset expandido da Fase 2 (1.852.394 transações, período jan/2019–dez/2020) ainda não foi usado para retreinar ou validar os modelos — é o próximo passo natural de evolução do projeto.
 
 ## 5. Artefatos gerados
 
-- `reports/figures/01_curva_roc.png` — curva ROC comparando os dois modelos
-- `reports/figures/02_curva_precision_recall.png` — curva Precisão-Recall (a mais informativa para essa classe rara)
-- `reports/figures/03_matriz_confusao.png` — matrizes de confusão lado a lado
-- `reports/figures/04_importancia_variaveis.png` — importância de variáveis do Random Forest
-- `reports/metricas_modelos.csv` — métricas consolidadas
-- `reports/predicoes_amostra.csv` — amostra de 2.000 predições para inspeção manual
+- `fase_1_looker_studio/reports/figures/01_curva_roc.png` — curva ROC comparando os dois modelos
+- `fase_1_looker_studio/reports/figures/02_curva_precision_recall.png` — curva Precisão-Recall (a mais informativa para essa classe rara)
+- `fase_1_looker_studio/reports/figures/03_matriz_confusao.png` — matrizes de confusão lado a lado
+- `fase_1_looker_studio/reports/figures/04_importancia_variaveis.png` — importância de variáveis do Random Forest
+- `fase_1_looker_studio/reports/metricas_modelos.csv` — métricas consolidadas
+- `fase_1_looker_studio/reports/predicoes_amostra.csv` — amostra de 2.000 predições para inspeção manual
